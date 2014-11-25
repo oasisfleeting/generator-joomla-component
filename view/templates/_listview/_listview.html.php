@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @author		<%= authorName %> <<%= authorEmail %>>
  * TODO: Describe your view here
  */
-class <%= viewClassName %>View<%= _.classify(componentName) %> extends JViewLegacy {
+class <%= viewClassName %>View<%= _.underscored(componentName) %> extends JViewLegacy {
 	// TODO: place attributes here: ex. $protected $items;
     	protected $items;
     	protected $pagination;
@@ -41,7 +41,7 @@ class <%= viewClassName %>View<%= _.classify(componentName) %> extends JViewLega
 	            throw new Exception(implode("\n", $errors));
 	        }
 	        
-        	//<%= _.classify(componentName) %>Helper::addSubmenu("'".<%= viewClassName %>."'");	        
+        	//<%= componentName %>Helper::addSubmenu('<%= viewClassName %>');	        
         
 		// TODO: constructor logic here
 		parent::display($tpl);
@@ -53,10 +53,10 @@ class <%= viewClassName %>View<%= _.classify(componentName) %> extends JViewLega
 	* @since	1.6
 	*/
 	protected function addToolbar() {
-	require_once JPATH_COMPONENT . '/helpers/<%= _.classify(componentName) %>.php';
+	require_once JPATH_COMPONENT . '/helpers/<%= _.underscored(componentName) %>.php';
 	$state = $this->get('State');
 	$canDo = Metro_<%= viewFolderName.slice(0,-1) %>Helper::getActions($state->get('filter.category_id'));
-	JToolBarHelper::title(JText::_('COM_<%= _.slugify(componentName).toUpperCase() %>_TITLE_<%= _.classify(viewClassName).toUpperCase() %>'), '<%= viewFolderName %>.png');
+	JToolBarHelper::title(JText::_('COM_<%= _.underscored(componentName).toUpperCase() %>_TITLE_<%= _.classify(viewClassName).toUpperCase() %>'), '<%= viewFolderName %>.png');
 	//Check if the form exists before showing the add/edit buttons
 	$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/<%= viewFolderName.slice(0,-1) %>';
 	if (file_exists($formPath)) {
@@ -95,10 +95,10 @@ class <%= viewClassName %>View<%= _.classify(componentName) %> extends JViewLega
 	    }
 	}
 	if ($canDo->get('core.admin')) {
-	    JToolBarHelper::preferences('com_<%= _.classify(componentName) %>');
+	    JToolBarHelper::preferences('com_<%= _.underscored(componentName) %>');
 	}
 	//Set sidebar action - New in 3.0
-	JHtmlSidebar::setAction('index.php?option=com_<%= _.classify(componentName) %>&view=<%= viewFolderName %>');
+	JHtmlSidebar::setAction('index.php?option=com_<%= _.underscored(componentName) %>&view=<%= viewFolderName %>');
 	$this->extra_sidebar = '';
 	
 		JHtmlSidebar::addFilter(
@@ -114,7 +114,7 @@ class <%= viewClassName %>View<%= _.classify(componentName) %> extends JViewLega
 		'a.id' => JText::_('JGRID_HEADING_ID'),
 		'a.ordering' => JText::_('JGRID_HEADING_ORDERING'),
 		'a.state' => JText::_('JSTATUS'),
-		'a.title' => JText::_('COM_<%= _.slugify(componentName).toUpperCase() %>_<%= _.classify(viewClassName).toUpperCase() %>_TITLE'),
+		'a.title' => JText::_('COM_<%= <%= _.underscored(componentName).toUpperCase() %> %>_<%= _.classify(viewClassName).toUpperCase() %>_TITLE'),
 		);
 	}	
 }
