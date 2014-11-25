@@ -115,8 +115,6 @@ class <%= viewClassName %>View<%= _.classify(componentName) %> extends JViewLega
 		'a.ordering' => JText::_('JGRID_HEADING_ORDERING'),
 		'a.state' => JText::_('JSTATUS'),
 		'a.title' => JText::_('COM_<%= _.slugify(componentName).toUpperCase() %>_<%= _.classify(viewClassName).toUpperCase() %>_TITLE'),
-		'a.day' => JText::_('COM_<%= _.slugify(componentName).toUpperCase() %>_<%= _.classify(viewClassName).toUpperCase() %>_DAY'),
-		'a.sessiontime' => JText::_('COM_<%= _.slugify(componentName).toUpperCase() %>_<%= _.classify(viewClassName).toUpperCase() %>_SESSIONTIME'),
 		);
 	}	
 }
