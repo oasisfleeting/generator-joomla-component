@@ -45,8 +45,7 @@
 	        Joomla.tableOrdering(order, dirn, '');
 	}
 </script>
-<?php
-	//Joomla Component Creator code to allow adding non select list filters
+<?php	
 	if (!empty($this->extra_sidebar)) {
 	    $this->sidebar .= $this->extra_sidebar;
 	}
